@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_marginTop="100px"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30px"
+        android:textSize="20dp"
+        android:text="Bubble Words 사용 설명 (Ver1.0)"
+        />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="120px"
+        android:layout_marginLeft="30px"
+        android:gravity="left" >
+
+        <ImageView
+            android:id="@+id/imgEnglish"
+            android:layout_width="100px"
+            android:layout_height="100px"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30px"
+            android:text="English(영어)"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="120px"
+        android:layout_marginLeft="30px"
+        android:gravity="left" >
+
+        <ImageView
+            android:id="@+id/imgChiness"
+            android:layout_width="100px"
+            android:layout_height="100px"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30px"
+            android:text="Chiness(중국어)"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="120px"
+        android:layout_marginLeft="30px"
+        android:gravity="left" >
+
+        <ImageView
+            android:id="@+id/imgJapaness"
+            android:layout_width="100px"
+            android:layout_height="100px"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30px"
+            android:text="Japaness(일본어)"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="120px"
+        android:layout_marginLeft="30px"
+        android:gravity="left" >
+
+        <ImageView
+            android:id="@+id/imgStage"
+            android:layout_width="100px"
+            android:layout_height="100px"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30px"
+            android:text="난이도 ( 초급(초등) / 중급(중등) / 고급(수능) ) "
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="120px"
+        android:layout_marginLeft="30px"
+        android:gravity="left" >
+        <ImageView
+            android:id="@+id/imgMarine"
+            android:layout_width="100px"
+            android:layout_height="100px"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30px"
+            android:text="단어 풍선을 생성하거나 사라지게 합니다"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="120px"
+        android:layout_marginLeft="30px"
+        android:gravity="left" >
+        <ImageView
+            android:id="@+id/imgSound"
+            android:layout_width="100px"
+            android:layout_height="100px"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30px"
+            android:text="Sound On/Off 합니다. ( TTS 설치 필요 )"
+            />
+    </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:id="@+id/finishActivity"
+        android:text="Home"/>
+
+
+</LinearLayout>
