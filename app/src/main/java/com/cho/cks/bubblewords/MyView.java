@@ -127,6 +127,14 @@ public class MyView extends SurfaceView implements Callback {
                     )
             {
                 mThread.DestroyBubble(x, y);	// 비누방울 제거
+
+                boolean refreshFlag = ((MyApp)mContext.getApplicationContext()).getRefreshFlag();
+
+                if ( refreshFlag ) {
+                    generateWordQuestion(pref);
+                }
+
+                ((MyApp)mContext.getApplicationContext()).setRefreshFlag(false);
             }
 
             // *****************************************************************************
@@ -190,9 +198,17 @@ public class MyView extends SurfaceView implements Callback {
                         difficult++;
                     }
                 } else if (wordLang == "CHINESS") {
-                    difficult = 1;
+                    if (difficult == 3) {
+                        difficult = 1;
+                    } else {
+                        difficult++;
+                    }
                 } else if (wordLang == "JAPANESS") {
-                    difficult = 1;
+                    if (difficult == 3) {
+                        difficult = 1;
+                    } else {
+                        difficult++;
+                    }
                 }
 
                 // 난이도 및 스테이지
@@ -218,60 +234,17 @@ public class MyView extends SurfaceView implements Callback {
                   && y <= (view_height - imgMainYPos) + imgMainHeight
             )
             {
+                // Login 되지 않으면
+
                 // 실행중에는 새로운 문제가 실행되지 않도록 함
                 if (mThread.CheckBubbleRunning() == 0 ) {
 
-                    // ---------------------------------
-                    // JSON에서 문제 가져오기
-                    // ---------------------------------
-                    // 실제로 보여지는 문제는 이미 가져다 놓은 문제임.
-                    // Async
-                    String word_level = ((MyApp)mContext.getApplicationContext()).getWordStage();
-
-                    int questionCount = ((MyApp)mContext.getApplicationContext()).getQuestionNo();
-
-                    String strQuestionNo = String.valueOf( questionCount );
-
-                    new PostAsyncWord(mContext).execute(word_level, strQuestionNo);
-
-                    // ---------------------------------
-                    //문제 만들기
-                    // ---------------------------------
-                    String strWord, strMeaning;
-
-                    // Language 변경여부 Check
-                    boolean isChangeLang = ((MyApp)mContext.getApplicationContext()).getIsChangeLang();
-
-                    if (isChangeLang == false)
-                    {
-
-                        // 문제 만들기
-                        strWord = pref.getString("qword_letter", "");
-                        strMeaning = pref.getString("qword_meaning", "");
-
-                        makeWordQuestion(strWord, strMeaning);
-
-                        // Word Bubble 만들기
-                        int word_count = pref.getInt("word_count", 0);
-
-                        for (int i = 0; i < word_count; i++) {
-                            strWord = pref.getString("word_letter" + i, "");
-                            strMeaning = pref.getString("word_meaning" + i, "");
-
-                            makeWordBubble(strWord, strMeaning);
-
-                            SystemClock.sleep(1000);
-                        }
-
-
-                    } else {
-
-                        // Language 변경여부 Clear
-                        ((MyApp)mContext.getApplicationContext()).setIsChangeLang(false);
-                    }
+                    generateWordQuestion(pref);
 
                 } else {
+
                     mThread.ClearBubble();
+
                 }
 
             }
@@ -302,7 +275,7 @@ public class MyView extends SurfaceView implements Callback {
             }
 
             // *****************************************************************************
-            // Sound
+            // Help
             // *****************************************************************************
             int imgHelpWidth = ((MyApp)mContext.getApplicationContext()).btnHelpWidth;
             int imgHelpHeight = ((MyApp)mContext.getApplicationContext()).btnHelpHeight;
@@ -328,6 +301,55 @@ public class MyView extends SurfaceView implements Callback {
         mThread.CheckBubble(strWord, strMeaning);		// 비누방울 조사
 
         return true;
+    }
+
+    public void generateWordQuestion(SharedPreferences pref) {
+        // ---------------------------------
+        // JSON에서 문제 가져오기
+        // ---------------------------------
+        // 실제로 보여지는 문제는 이미 가져다 놓은 문제임. Async
+        String word_level = ((MyApp)mContext.getApplicationContext()).getWordStage();
+
+        int questionCount = ((MyApp)mContext.getApplicationContext()).getQuestionNo();
+
+        String strQuestionNo = String.valueOf( questionCount );
+
+        new PostAsyncWord(mContext).execute(word_level, strQuestionNo);
+
+        // ---------------------------------
+        //문제 만들기
+        // ---------------------------------
+        String strWord, strMeaning;
+
+        // Language 변경여부 Check
+        boolean isChangeLang = ((MyApp)mContext.getApplicationContext()).getIsChangeLang();
+
+        if (isChangeLang == false)
+        {
+
+            // 문제 만들기
+            strWord = pref.getString("qword_letter", "");
+            strMeaning = pref.getString("qword_meaning", "");
+
+            makeWordQuestion(strWord, strMeaning);
+
+            // Word Bubble 만들기
+            int word_count = pref.getInt("word_count", 0);
+
+            for (int i = 0; i < word_count; i++) {
+                strWord = pref.getString("word_letter" + i, "");
+                strMeaning = pref.getString("word_meaning" + i, "");
+
+                makeWordBubble(strWord, strMeaning);
+
+                SystemClock.sleep(1000);
+            }
+
+        } else {
+
+            // Language 변경여부 Clear
+            ((MyApp)mContext.getApplicationContext()).setIsChangeLang(false);
+        }
     }
 
     public boolean makeWordQuestion(String strWord, String strMeaning)

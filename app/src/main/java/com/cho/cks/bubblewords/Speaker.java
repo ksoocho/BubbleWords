@@ -77,7 +77,7 @@ public class Speaker implements OnInitListener {
         if(ready && allowed) {
             HashMap<String, String> hash = new HashMap<String,String>();
             hash.put(TextToSpeech.Engine.KEY_PARAM_STREAM,
-                    String.valueOf(AudioManager.STREAM_NOTIFICATION));
+                    String.valueOf(AudioManager.STREAM_MUSIC));
             tts.speak(text, TextToSpeech.QUEUE_ADD, hash);
         }
     }

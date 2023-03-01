@@ -16,13 +16,17 @@ public class MyApp extends Application {
     // ------------------------------------
     // 언어별 기본 단어장
     // ------------------------------------
-    public static String stageEnglish1 = "A0002";
-    public static String stageEnglish2 = "B0003";
+    public static String stageEnglish1 = "C0003";
+    public static String stageEnglish2 = "C0003";
     public static String stageEnglish3 = "C0003";
 
     public static String stageChiness1 = "E0002";
+    public static String stageChiness2 = "E0002";
+    public static String stageChiness3 = "E0002";
 
     public static String stageJapaness1 =  "J0001";
+    public static String stageJapaness2 =  "J0001";
+    public static String stageJapaness3 =  "J0001";
 
     // ------------------------------------
     // 화면 Layout
@@ -58,7 +62,6 @@ public class MyApp extends Application {
     public static int btnQuestionXPos = 50;
     public static int btnQuestionYPos = 390;
 
-
     // ------------------------------------
     // Global Setting
     // ------------------------------------
@@ -68,7 +71,7 @@ public class MyApp extends Application {
     private boolean isSound;
     private boolean isChangeLang;
 
-
+    private boolean refreshFlag;
     // --------------------
     // 단어 풍선 수
     // --------------------
@@ -127,6 +130,7 @@ public class MyApp extends Application {
         String stage = "";
 
         if (word_lang == "ENGLISH"){
+            stage = stageEnglish1;
 
             if (difficult == 1) {
                 stage = stageEnglish1;
@@ -138,8 +142,26 @@ public class MyApp extends Application {
 
         } else if (word_lang == "CHINESS") {
             stage = stageChiness1;
+
+            if (difficult == 1) {
+                stage = stageChiness1;
+            } else if (difficult == 2) {
+                stage = stageChiness2;
+            } else {
+                stage = stageChiness3;
+            }
+
         } else if (word_lang == "JAPANESS") {
             stage = stageJapaness1;
+
+            if (difficult == 1) {
+                stage = stageJapaness1;
+            } else if (difficult == 2) {
+                stage = stageJapaness2;
+            } else {
+                stage = stageJapaness3;
+            }
+
         }
 
         word_stage = stage;
@@ -163,6 +185,16 @@ public class MyApp extends Application {
     }
     public void setIsChangeLang(boolean _changeLang) {
         isChangeLang = _changeLang;
+    }
+
+    // --------------------
+    // Refresh Flag
+    // --------------------
+    public boolean getRefreshFlag(){
+        return refreshFlag;
+    }
+    public void setRefreshFlag(boolean _refreshFlag) {
+        refreshFlag = _refreshFlag;
     }
 
 }

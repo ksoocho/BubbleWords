@@ -196,7 +196,9 @@ public class MyThread extends Thread {
         }
 
         // 맞추면 모든 Bubble Destroy
+        // 새로운 문제 만들기
         if ( checkOK == true){
+            ((MyApp)mContext.getApplicationContext()).setRefreshFlag(true);
             SuccessTot += 1;
             Log.d("DEBUG","Ball Word - check OK");
             for (MyBubble tmp :  mBubble) {

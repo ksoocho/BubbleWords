@@ -90,8 +90,8 @@ public class MainActivity extends Activity {
                 if ( user_id > 0  ) {
                     Toast.makeText(MainActivity.this, "Success - Get User(Preferences)", Toast.LENGTH_LONG).show();
                 } else {
-                    String username = "autouser";
-                    String password = "12345678";
+                    String username = "111";
+                    String password = "111";
                     new PostAsyncLogin(MainActivity.this).execute(username, password);
                 }
                 break;

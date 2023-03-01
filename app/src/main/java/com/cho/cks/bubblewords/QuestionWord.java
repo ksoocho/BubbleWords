@@ -29,7 +29,7 @@ public class QuestionWord {
 
         Paint paint = new Paint();
         paint.setTextSize(16 * mContext.getResources().getDisplayMetrics().density);
-        paint.setColor(Color.BLACK);
+        paint.setColor(Color.BLUE);
         paint.setTextAlign(Paint.Align.LEFT);
         //paint.setFakeBoldText(true);
 

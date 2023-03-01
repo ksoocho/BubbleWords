@@ -8,11 +8,10 @@
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="200px"
         android:layout_marginLeft="30px"
-        android:textSize="20dp"
-        android:text="Bubble Words 사용 설명 (Ver1.0)"
-        />
+        android:text="Bubble Words 사용 설명 (Ver2.0)"
+        android:textSize="20dp" />
 
     <LinearLayout
         android:orientation="horizontal"
@@ -87,12 +86,12 @@
             android:layout_width="100px"
             android:layout_height="100px"
             />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30px"
-            android:text="난이도 ( 초급(초등) / 중급(중등) / 고급(수능) ) "
-            />
+            android:text="난이도 ( 초급 / 중급 / 고급 ) " />
     </LinearLayout>
 
     <LinearLayout

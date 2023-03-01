@@ -58,8 +58,7 @@ public class MyBubble {
         sy = (rnd.nextInt(4) + 1) * k;                // ± 2~5
 
         // 비트맵 이미지를 위에서 설정한 반지름 2배 크기로 만든다
-        int color = com.cho.cks.bubblewords.R.color.black;
-        imgBbl = textAsBitmap(context, _strWord, color);
+        imgBbl = textAsBitmap(context, _strWord);
 
         rad = imgBbl.getWidth()/2;
 
@@ -73,8 +72,8 @@ public class MyBubble {
         x += sx;    // 이동
         y += sy;
 
-        if (x <= rad || x >= width - rad) {        // 좌우의 벽
-            sx = -sx;                            // 반대 방향으로 반사
+        if (x <= rad || x >= width - rad) {     // 좌우의 벽
+            sx = -sx;                           // 반대 방향으로 반사
             count++;                            // 벽과 부딪친 횟수
         }
 
@@ -87,12 +86,14 @@ public class MyBubble {
         //if (count >= 10) dead = true;
     }
 
-    public Bitmap textAsBitmap(Context context, String text, int textColor) {
+    public Bitmap textAsBitmap(Context context, String text) {
+
         Paint paint = new Paint();
         paint.setTextSize(16  * context.getResources().getDisplayMetrics().density);
-        paint.setColor(textColor);
+        paint.setColor(Color.YELLOW);
         paint.setFakeBoldText(true);
         paint.setTextAlign(Paint.Align.LEFT);
+
         float baseline = -paint.ascent(); // ascent() is negative
         int width = (int) (paint.measureText(text) + 0.5f); // round
         int height = (int) (baseline + paint.descent() + 0.5f);
